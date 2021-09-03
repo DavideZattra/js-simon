@@ -11,31 +11,23 @@ function getRandomNumber(min, max) { //funzione che crea un numero randomico tra
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-function insertGuessedNumber(){
-    for (i = 0; i < displayedNumbers.length; i++){
+function isBetweenInt(int, min, max){ //funzione che verifica se un intero è tra un intervallo
 
-        let guessedNumber = parseInt(prompt('inserisci un numero che hai visto precedentemente'));
-
-        if (isNaN(guessedNumber)){
-
-            alert('inserisci un numero valido!');
-            i--;
-
-        } else if (displayedNumbers.includes(guessedNumber)){
-
-            userNumbers.push(guessedNumber);
-            correctNumbers.push(guessedNumber);
-
-        }
+    if (int < min || int > max){
+        
+        return false;
     }
+    return true;
 }
+
+
 
 let displayedNumbers=[]; //array of generated numbers
 let userNumbers = []; //array of the prompted numbers
 let correctNumbers = []; //array of the correct guessed numbers 
 
 
-for(i = 0; i < 50; i++){
+for(i = 0; i < 5; i++){
     
     let memoryNumber = getRandomNumber(1, 100);
 
@@ -50,7 +42,35 @@ for(i = 0; i < 50; i++){
 
 alert(displayedNumbers);
 
+setTimeout(function insertGuessedNumber(){
+
+    for (i = 0; i < displayedNumbers.length; i++){
+
+        let guessedNumber = parseInt(prompt('inserisci un numero che hai visto precedentemente'));
+
+        if (isNaN(guessedNumber) || !isBetweenInt(guessedNumber, 1, 100)){
+
+            alert('inserisci un numero valido tra 1 e 100!');
+            i--;
+
+        } else if (displayedNumbers.includes(guessedNumber)){
+
+            userNumbers.push(guessedNumber);
+            correctNumbers.push(guessedNumber);
+
+        } else {
+            userNumbers.push(guessedNumber)
+        }
+    }
+    
+    alert('Hai inserito i numeri ' + userNumbers)
+    alert(' i numeri corretti tra questi erano ' + correctNumbers) 
+}, 30000);
+
+
+
+
+
 // Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente,
 // tramite il prompt().
 
-setTimeout(insertGuessedNumbers, 30000);
