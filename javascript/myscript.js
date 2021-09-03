@@ -42,7 +42,8 @@ for(i = 0; i < 5; i++){
 
 alert(displayedNumbers);
 
-setTimeout(function insertGuessedNumber(){
+setTimeout(function insertGuessedNumber(){ // Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente,
+                                            // tramite il prompt().
 
     for (i = 0; i < displayedNumbers.length; i++){
 
@@ -62,7 +63,7 @@ setTimeout(function insertGuessedNumber(){
             userNumbers.push(guessedNumber)
         }
     }
-    
+
     alert('Hai inserito i numeri ' + userNumbers)
     alert(' i numeri corretti tra questi erano ' + correctNumbers) 
 }, 30000);
@@ -71,6 +72,5 @@ setTimeout(function insertGuessedNumber(){
 
 
 
-// Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente,
-// tramite il prompt().
+
 
