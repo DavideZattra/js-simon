@@ -45,14 +45,13 @@ alert(displayedNumbers);
 setTimeout(function insertGuessedNumber(){ // Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente,
                                             // tramite il prompt().
 
-    for (i = 0; i < displayedNumbers.length; i++){
+    while (userNumbers.length < displayedNumbers.length){
 
         let guessedNumber = parseInt(prompt('inserisci un numero che hai visto precedentemente'));
 
-        if (isNaN(guessedNumber) || !isBetweenInt(guessedNumber, 1, 100)){
+        if (isNaN(guessedNumber) || !isBetweenInt(guessedNumber, 1, 100) || userNumbers.includes(guessedNumber)){
 
-            alert('inserisci un numero valido tra 1 e 100!');
-            i--;
+            alert('inserisci un numero valido tra 1 e 100! e ricordati di non ripeterlo!');
 
         } else if (displayedNumbers.includes(guessedNumber)){
 
@@ -62,11 +61,12 @@ setTimeout(function insertGuessedNumber(){ // Dopo 30 secondi l'utente deve inse
         } else {
             userNumbers.push(guessedNumber)
         }
+        
     }
 
     alert('Hai inserito i numeri ' + userNumbers)
     alert(' i numeri corretti tra questi erano ' + correctNumbers) 
-}, 30000);
+}, 3000);
 
 
 
