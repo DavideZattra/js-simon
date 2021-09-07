@@ -66,7 +66,7 @@ setTimeout(function insertGuessedNumber(){ // Dopo 30 secondi l'utente deve inse
 
     alert('Hai inserito i numeri ' + userNumbers)
     alert(' i numeri corretti tra questi erano ' + correctNumbers) 
-}, 3000);
+}, 30000);
 
 
 
